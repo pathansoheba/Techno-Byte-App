@@ -4,8 +4,8 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.technobyte.model.EventDetailsDTO;
-import com.technobyte.model.RegistrationDetails;
+import com.technobyte.model.EventDetailsDto;
+import com.technobyte.model.RegistrationDetailsDto;
 import lombok.*;
 
 import javax.persistence.*;
@@ -71,8 +71,8 @@ public class EventDetails {
   @Column(name = "lst_updt_dt")
   private LocalDateTime lstUpDtDt;
 
-  public EventDetailsDTO convertToDTO(EventDetails eventEntity) {
-    EventDetailsDTO eventDTO = new EventDetailsDTO();
+  public EventDetailsDto convertToDTO(EventDetails eventEntity) {
+    EventDetailsDto eventDTO = new EventDetailsDto();
     eventDTO.setEventId(eventEntity.getEventId());
     eventDTO.setTargetAudience(eventEntity.getTargetAudience());
     eventDTO.setEventType(eventEntity.getEventType());
@@ -101,12 +101,12 @@ public class EventDetails {
         Stream<JsonNode> jsonNodeStream =
             StreamSupport.stream(Spliterators.spliteratorUnknownSize(iterator, 0), false);
 
-        List<RegistrationDetails> registrationDetailsList =
+        List<RegistrationDetailsDto> registrationDetailsDtoList =
             jsonNodeStream
-                .map(node -> objectMapper.convertValue(node, RegistrationDetails.class))
+                .map(node -> objectMapper.convertValue(node, RegistrationDetailsDto.class))
                 .collect(Collectors.toList());
         eventDTO.setRegistrations(
-            registrationDetailsList.isEmpty() ? null : registrationDetailsList);
+            registrationDetailsDtoList.isEmpty() ? null : registrationDetailsDtoList);
       }
     } catch (JsonProcessingException e) {
       throw new RuntimeException(e);

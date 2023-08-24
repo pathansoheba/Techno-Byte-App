@@ -12,8 +12,8 @@ import org.springframework.context.annotation.ComponentScan;
 public class TechnoByteApplication {
 
   public static void main(String[] args) {
-    log.info("server about to start");
+    log.info("start : server");
     SpringApplication.run(TechnoByteApplication.class, args);
-    log.info("server started");
+    log.info("server : started");
   }
 }

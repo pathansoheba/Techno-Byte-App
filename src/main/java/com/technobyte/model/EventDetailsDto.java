@@ -5,12 +5,11 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.List;
 
 @Getter
 @Setter
-public class EventDetailsDTO {
+public class EventDetailsDto {
   public String eventId;
 
   private String targetAudience;
@@ -35,7 +34,7 @@ public class EventDetailsDTO {
 
   private List<String> latestUpdates;
 
-  private List<RegistrationDetails> registrations;
+  private List<RegistrationDetailsDto> registrations;
 
   private LocalDateTime crtDt;
 
