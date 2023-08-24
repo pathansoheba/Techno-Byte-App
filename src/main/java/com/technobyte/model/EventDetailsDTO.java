@@ -5,6 +5,8 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @Setter
@@ -31,9 +33,9 @@ public class EventDetailsDTO {
 
   private String googleMapLink;
 
-  private String latestUpdates;
+  private List<String> latestUpdates;
 
-  private String registrations;
+  private List<RegistrationDetails> registrations;
 
   private LocalDateTime crtDt;
 
